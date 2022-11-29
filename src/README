@@ -1,0 +1,12 @@
+Describe the goal of the application and value to a user
+Link to your deployed web application running online
+Explain the organization of your Components, and the props and state related to them
+Note the usability principles considered for layout and hierarchy
+
+1. This is a website that allwos users to browse different types of pastries. Users can favorite their preferred pastries and see the total price. Users also have acess to a filter that shows pastries under $5 and pastires under 500 calories. The user can also sort the pastries from least to most expensive.
+
+2.
+
+3.All filtering buttons are at the top with different pastries distributed in a row format on the website. At the bottom is the tally of all the user's favorite pastries and the total price.
+
+4.All filtering and sorting buttons are located at the top to provide ease of access and uniformity. All pastries are organized in similar cards to make the site more uniform and to give the users an organized view. Images of the pastries are biggest since they can help the user make the most informed decision. 
