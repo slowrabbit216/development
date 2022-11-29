@@ -25,9 +25,10 @@ function App() {
   }
 
   function removeFromCart(item) {
-    if (myCart.includes(item))
+    if (myCart.includes(item)) {
       setMyCart(myCart.filter((name) => name !== item));
-    setMyPrice(myPrice - item.price);
+      setMyPrice(myPrice - item.price);
+    }
   }
 
   function filterPrice(minPrice, maxPrice) {
@@ -59,14 +60,11 @@ function App() {
     setDisplayArray(bakeryData);
   }
 
-  /* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
   function myFunction(id) {
     console.log("here");
     document.getElementById(id).classList.toggle("show");
   }
 
-  // Close the dropdown menu if the user clicks outside of it
   window.onclick = function (event) {
     if (!event.target.matches(".dropbtn")) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -129,6 +127,7 @@ toggle between hiding and showing the dropdown content */
             item={item}
             index={index}
             addToCart={addToCart}
+            removeFromCart={removeFromCart}
           />
         ))}
       </div>

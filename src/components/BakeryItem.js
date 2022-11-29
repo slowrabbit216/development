@@ -1,6 +1,6 @@
 // TODO: create a component that displays a single bakery item
 
-export default function BakeryItem({ item, index, addToCart }) {
+export default function BakeryItem({ item, index, addToCart, removeFromCart }) {
   return (
     <div class="SingleItem">
       <h2>{item.name}</h2>
@@ -9,6 +9,9 @@ export default function BakeryItem({ item, index, addToCart }) {
 
       <img src={item.image} alt="Pastries" />
       <button onClick={() => addToCart(index, item)}>add to favorites</button>
+      <button onClick={() => removeFromCart(item)}>
+        remove from favorites
+      </button>
     </div>
   );
 }
