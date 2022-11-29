@@ -18,25 +18,32 @@ function App() {
   const [displayArray, setDisplayArray] = useState(bakeryData);
 
   function addToCart(index, item) {
-    if (!myCart.includes(item.name)) {
-      setMyCart([...myCart, item.name]);
+    if (!myCart.includes(item)) {
+      setMyCart([...myCart, item]);
       setMyPrice(myPrice + item.price);
     }
   }
 
-  function removeFromCart(itemName) {
-    console.log(itemName, "here", myCart);
-    if (myCart.includes(itemName))
-      setMyCart(myCart.filter((name) => name !== itemName));
+  function removeFromCart(item) {
+    if (myCart.includes(item))
+      setMyCart(myCart.filter((name) => name !== item));
+    setMyPrice(myPrice - item.price);
   }
 
-  function filterPrice(maxPrice) {
-    setDisplayArray(displayArray.filter((pastry) => pastry.price < maxPrice));
-  }
-
-  function filterCalories(maxCalories) {
+  function filterPrice(minPrice, maxPrice) {
     setDisplayArray(
-      displayArray.filter((pastry) => pastry.calories < maxCalories)
+      bakeryData.filter(
+        (pastry) => (pastry.price > minPrice) & (pastry.price < maxPrice)
+      )
+    );
+  }
+
+  function filterCalories(minCalories, maxCalories) {
+    setDisplayArray(
+      bakeryData.filter(
+        (pastry) =>
+          (pastry.calories > minCalories) & (pastry.calories < maxCalories)
+      )
     );
   }
 
@@ -44,19 +51,77 @@ function App() {
     setDisplayArray([...displayArray.sort((a, b) => a.price - b.price)]);
   }
 
+  function sortExpensivetoCheap() {
+    setDisplayArray([...displayArray.sort((a, b) => b.price - a.price)]);
+  }
+
   function reset() {
     setDisplayArray(bakeryData);
   }
 
+  /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+  function myFunction(id) {
+    console.log("here");
+    document.getElementById(id).classList.toggle("show");
+  }
+
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function (event) {
+    if (!event.target.matches(".dropbtn")) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains("show")) {
+          openDropdown.classList.remove("show");
+        }
+      }
+    }
+  };
+
   return (
     <div className="App">
       <h1>My Bakery</h1> {/* TODO: personalize your bakery (if you want) */}
-      <button onClick={() => filterPrice(5)}> Less than $5</button>
-      <button onClick={() => filterCalories(500)}> Low Calories</button>
-      <button onClick={() => sortCheaptoExpensive()}>
-        Sort: Least Expensive - Most Expensive
-      </button>
-      <button onClick={() => reset()}> All</button>
+      <div class="dropdown">
+        <button onClick={() => myFunction("filterPrice")} class="dropbtn">
+          Filter By Price
+        </button>
+        <div id="filterPrice" class="dropdown-content">
+          <button onClick={() => filterPrice(0, 5)}> Less than $4</button>
+          <button onClick={() => filterPrice(4, 10)}>
+            {" "}
+            Between $4 and $10
+          </button>
+          <button onClick={() => filterPrice(0, 100)}> All</button>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button onClick={() => myFunction("filterCalories")} class="dropbtn">
+          Filter By Calories
+        </button>
+        <div id="filterCalories" class="dropdown-content">
+          <button onClick={() => filterCalories(0, 500)}> Low Calories</button>
+          <button onClick={() => filterCalories(500, 1000)}>
+            High Calories
+          </button>
+          <button onClick={() => filterCalories(0, 10000)}> All</button>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button onClick={() => myFunction("sortPrice")} class="dropbtn">
+          Sort By Price
+        </button>
+        <div id="sortPrice" class="dropdown-content">
+          <button onClick={() => sortCheaptoExpensive()}>
+            Sort: Least Expensive - Most Expensive
+          </button>
+          <button onClick={() => sortExpensivetoCheap()}>
+            Sort: Most Expensive - Least Expensive
+          </button>
+        </div>
+      </div>
+      <button onClick={() => reset()}> Reset</button>
       <div class="ItemContainer">
         {displayArray.map((item, index) => (
           <BakeryItem
