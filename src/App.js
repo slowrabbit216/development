@@ -24,14 +24,10 @@ function App() {
     }
   }
 
-  function removeFromCart(item) {
-    if (myCart.includes(item.name)) {
-      let updatedCart = [...myCart];
-      console.log("Before filtering:" + updatedCart);
-      updatedCart.filter((name) => name !== item.name);
-      setMyCart(updatedCart);
-      console.log("After filtering:" + updatedCart);
-    }
+  function removeFromCart(itemName) {
+    console.log(itemName, "here", myCart);
+    if (myCart.includes(itemName))
+      setMyCart(myCart.filter((name) => name !== itemName));
   }
 
   function filterPrice(maxPrice) {
@@ -45,7 +41,7 @@ function App() {
   }
 
   function sortCheaptoExpensive() {
-    setDisplayArray(displayArray.sort((a, b) => b.price - a.price));
+    setDisplayArray([...displayArray.sort((a, b) => a.price - b.price)]);
   }
 
   function reset() {
@@ -58,7 +54,6 @@ function App() {
       <button onClick={() => filterPrice(5)}> Less than $5</button>
       <button onClick={() => filterCalories(500)}> Low Calories</button>
       <button onClick={() => sortCheaptoExpensive()}>
-        {" "}
         Sort: Least Expensive - Most Expensive
       </button>
       <button onClick={() => reset()}> All</button>
