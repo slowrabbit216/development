@@ -1,33 +1,12 @@
-# React Studio
+Describe the goal of the application and value to a user
+Link to your deployed web application running online
+Explain the organization of your Components, and the props and state related to them
+Note the usability principles considered for layout and hierarchy
 
-Use this stencil code to get started!
+1. This is a website that allwos users to browse different types of pastries. Users can favorite their preferred pastries and see the total price. Users also have acess to 2 filtering categories. The first category allows the user to filter based on the price of the pastries. The second category allows the user to filter based on calories of the pastries. The user can also sort by least expensive to most expensive price or most expensive to least expensive. 
 
-Make sure you're signed into your GitHub account (either real or anonymous is fine for this).
+2. https://slowrabbit216.github.io/development/
 
-If you do not follow these three steps, your react app WILL NOT DEPLOY CORRECTLY!
+3. All filtering buttons are at the top with different pastries distributed in a row format on the website. At the bottom is the tally of all the user's favorite pastries and the total price. Items can be removed from the favorites list and the price will change interactively. 
 
-1) Start to copy the stencil by clicking the green **"Use this template"** button above.
-
-2) In the configuration menu, set the name to `react-studio` and **make it Public**
-
-3) Lastly, you MUST **check "Include all branches"**
-
-Then, click "create repository from template" to create the repo in your github account. You can now clone the repository onto your local computer and open it in your editor of choice.
-
-## Getting started
-
-First, make sure you install all dependencies by running `npm install` in the project directory.
-
-Then, in the project directory, you can run `npm start` to run the app in the development mode.
-
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.
-
-You may also see any lint errors in the console.
-
-## Deploying
-
-We've included a GitHub Actions workflow that will automatically deploy your React app to GitHub Pages every time you push to the `main` branch. You can visit your site by visiting https://\<your GitHub username\>.github.io/react-studio
-
-Also there may be some latency with deploying, so it may take around 5 minutes after a commit to main before the website properly works.
+4. All filtering and sorting buttons are located at the top to provide ease of access and uniformity in the form of dropdowns. Filtering is sorted by cateogry either price or claires. All pastries are organized in similar cards to make the site more uniform and to give the users an organized view. Images of the pastries are biggest since they can help the user make the most informed decision. 
