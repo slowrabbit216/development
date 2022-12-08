@@ -80,7 +80,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>My Bakery</h1> {/* TODO: personalize your bakery (if you want) */}
+      <h1>Brown Street Bakery</h1> {/* TODO: personalize your bakery (if you want) */}
       <div class="dropdown">
         <button onClick={() => myFunction("filterPrice")} class="dropbtn">
           Filter By Price
